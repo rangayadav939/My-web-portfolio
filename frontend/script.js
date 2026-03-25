@@ -1,20 +1,44 @@
- document.getElementById("contactForm").addEventListener("submit", async function(e) {
+ const form = document.getElementById("contactForm");
+const responseMsg = document.getElementById("response");
+
+form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
-    const data = {
-        name: document.getElementById("name").value,
-        email: document.getElementById("email").value,
-        message: document.getElementById("message").value
-    };
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
 
-    const response = await fetch("http://localhost:5000/contact", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(data)
-    });
+    // Validation
+    if (!name || !email || !message) {
+        showMessage("Please fill all fields!", "red");
+        return;
+    }
 
-    const result = await response.json();
-    document.getElementById("response").innerText = result.message;
+    const data = { name, email, message };
+
+    try {
+        showMessage("Sending message...", "blue");
+
+        const res = await fetch("http://localhost:5000/contact", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await res.json();
+
+        showMessage(result.message, "green");
+        form.reset();
+
+    } catch (error) {
+        showMessage("Server error! Try again later.", "red");
+    }
 });
+
+// Function to show message
+function showMessage(msg, color) {
+    responseMsg.innerText = msg;
+    responseMsg.style.color = color;
+}

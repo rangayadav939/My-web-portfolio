@@ -1,26 +1,81 @@
- body {
-    font-family: Arial;
+ /* Reset some default styles */
+* {
     margin: 0;
-    background: #f4f4f4;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* Body styling */
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f4f8;
+    color: #333;
+}
+
+/* Header */
 header {
-    background: #333;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
     color: white;
     text-align: center;
-    padding: 20px;
+    padding: 25px;
+    font-size: 24px;
+    font-weight: bold;
 }
 
+/* Sections */
 section {
     background: white;
-    margin: 20px;
+    margin: 20px auto;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 12px;
+    width: 80%;
+    max-width: 800px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-button {
-    background: blue;
-    color: white;
+/* Headings */
+h2 {
+    margin-bottom: 10px;
+    color: #4facfe;
+}
+
+/* List styling */
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+/* Form inputs */
+input, textarea {
+    width: 100%;
     padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+/* Button styling */
+button {
+    background: #4facfe;
+    color: white;
+    padding: 10px 15px;
     border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Button hover effect */
+button:hover {
+    background: #007bff;
+}
+
+/* Response message */
+#response {
+    margin-top: 10px;
+    font-weight: bold;
 }
