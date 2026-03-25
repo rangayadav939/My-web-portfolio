@@ -8,7 +8,6 @@ form.addEventListener("submit", async (e) => {
     const email = document.getElementById("email").value.trim();
     const message = document.getElementById("message").value.trim();
 
-    // Validation
     if (!name || !email || !message) {
         showMessage("Please fill all fields!", "red");
         return;
@@ -17,7 +16,7 @@ form.addEventListener("submit", async (e) => {
     const data = { name, email, message };
 
     try {
-        showMessage("Sending message...", "blue");
+        showMessage("Sending message...", "#ff69b4");
 
         const res = await fetch("http://localhost:5000/contact", {
             method: "POST",
@@ -37,7 +36,6 @@ form.addEventListener("submit", async (e) => {
     }
 });
 
-// Function to show message
 function showMessage(msg, color) {
     responseMsg.innerText = msg;
     responseMsg.style.color = color;
